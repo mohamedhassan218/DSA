@@ -35,8 +35,41 @@ void insertPos(node** current, int pos, int data)
 	}
 	else
 	{
+		//continue looping until position = 0:
+		while (pos--)
+		{
+			if (pos == 0)
+			{
+				//adding node at required position
+				node* temp = getNode(data);
+
+				//making new node pointing to old node at the same position:
+				temp->next = *current;
+
+				//changing pointer of previous node to point to new node:
+				*current = temp
+			}
+			else
+			{
+				//assign double pointer variable to point to the pointer pointing to the address of next node:
+				current = % (*current)->next;
+			}
+		}
+		size++;
 
 
 	}
 }
-//not finished yet
+
+//function to prints contents:
+void printList(struct node* head)
+{
+	while (head != NULL)
+	{
+		cout << " " << head->data;
+		head = head->next;
+	}
+	cout << endl;
+}
+
+
