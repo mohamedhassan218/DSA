@@ -2,505 +2,302 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include <cmath>
 using namespace std;
 
-
-void maxAndMin(int a, int b, int c)
-{
-    int maximum = 0, minimum = 0;
-
-    maximum = a;
-    minimum = a;
-
-    if (maximum > b)
-    {
-        if (maximum <= c)
-        {
-            maximum = c;
-            minimum = b;
-        }
-        else if (maximum > c)
-        {
-            maximum = a;
-            if (c < b)
-            {
-                minimum = c;
-            }
-            else
-            {
-                minimum = b;
-            }
-        }
-    }
-    else if (maximum <= b)
-    {
-        maximum = b;
-        if (maximum <= c)
-        {
-            maximum = c;
-            minimum = a;
-        }
-        else if (maximum > c)
-        {
-            maximum = b;
-            if (c < a)
-            {
-                minimum = c;
-            }
-            else 
-            {
-                minimum = a;
-            }
-        }
-    }
-
-    cout << maximum << " " << minimum;
-}
-
-string brothers(string lastName1, string lastName2)
-{
-    string result = "NOT";
-    if (lastName1 == lastName2)
-    {
-        result = "ARE Brothers";
-    }
-    return result;
-}
-
-char lowerUpperChar(char c)
+void capitalOrSmallOrDigit(char characterFromUser)
 {
     
-    if (c <= 90 && c >= 65)  //c in upper case:
+    cin >> characterFromUser;
+    if (characterFromUser >= 48 && characterFromUser <= 58)
     {
-        c += 32;
-    }
-    else if (c <= 122 && c >= 97)
-    {
-        c -= 32;
-    }
-    return c;
-}
-
-long calculator(int a, int b, char c)
-{
-    long result;
-    if (c == '+')
-    {
-        result = a + b;
-    }
-    else if (c == '-')
-    {
-        result = a - b;
-    }
-    else if (c == '*')
-    {
-        result = a * b;
+        cout << "IS DIGIT";
     }
     else
     {
-        result = a / b;
+        cout << "ALPHA" << endl;
+        if (characterFromUser >= 65 && characterFromUser <= 91)
+        {
+            cout << "IS CAPITAL";
+        }
+        else
+        {
+            cout << "IS SMALL";
+        }
     }
-    return result;
+
 }
 
-string lastDigit(int number)
-{
-    string result = "ODD";
-
-    number %= 1000;
-    number %= 100;
-    number %= 10;
-    number %= 2;
-    if (number == 0)
-        result = "EVEN";
-
-    return result;
-}
-
-string firstDigit(int number)
-{
-    string result = "ODD";
-    number /= 1000;
-    number %= 2;
-    if (number == 0)
-        result = "EVEN";
-
-    return result;
-}
-
-string coordinatesOfPoint(double  x, double  y)
-{
-    string result = "Origem";
-    if (x == 0 && y == 0)
-        result = "Origem";
-    else if (x != 0 && y == 0)
-        result = "Eixo X";
-    else if (y != 0 && x == 0)
-        result = "Eixo Y";
-    else if (x > 0 && y > 0)
-        result = "Q1";
-    else if (x > 0 && y < 0)
-        result = "Q4";
-    else if (x < 0 && y >0)
-        result = "Q2";
-    else if (x < 0 && y < 0)
-        result = "Q3";
-
-    return result;
-}
-
-string watermelon(int weight)
+string kangaroo(int x1, int v1, int x2, int v2)
 {
     string result = "NO";
-
-    if (weight > 3)
+    if (x1 == x2 && v1 == v2)
     {
-        weight %= 2;
-        if (weight == 0)
-            result = "YES";
-    }
-    return result;
-}
-
-void ageInDays(long days)
-{
-    int years = days / 365;
-    days %= 365;
-    int months = days / 30;
-    days %= 30;
-    
-    cout << years << " years" << endl;
-    cout << months << " months" << endl;
-    cout << days << " days" << endl;
-}
-
-string comparision(float a, float b, char c)
-{
-    string result = " ";
-    if (c == '=')
-    {
-        if (a == b)
-            result = "Right";
-        else
-            result = "Wrong";
-    }
-    else if (c == '<')
-    {
-        if (a < b)
-            result = "Right";
-        else
-            result = "Wrong";
-    }
-    else if (c == '>')
-    {
-        if (a > b)
-            result = "Right";
-        else
-            result = "Wrong";
-    }
-    return result;
-}
-
-void mathematicalExpression(float a, char sign, float b, char equalSign, float c)
-{
-    if (sign == '+')
-    {
-        if (c == a + b)
-            cout << "Yes";
-        else
-        {
-            c = a + b;
-            cout << c;
-        }
-    }
-    else if (sign == '-')
-    {
-        if (c == a - b)
-            cout << "Yes";
-        else
-        {
-            c = a - b;
-            cout << c;
-        }
-    }
-    else if (sign == '*')
-    {
-        if (c == a * b)
-            cout << "Yes";
-        else
-        {
-            c = a * b;
-            cout << c;
-        }
-    }
-
-}
-
-string hardCompare(long long a, long long b, long long c, long long d)
-{
-    string result = "NO";
-    double y, z;
-    y = log(a) * b;
-    z = log(c) * d;
-    if (y > z)
         result = "YES";
-
+    }
+    else if (x1 != x2 && v1 == v2)
+    {
+        result = "NO";
+    }
+    else
+    {
+        for (int i = 0; i < 10000; i++)
+        {
+            x1 += v1;
+            x2 += v2;
+            if (x1 == x2)
+            {
+                result = "YES";
+            }
+        }
+    }
     return result;
 }
 
-void sortNumbers(int a, int b, int c)
+/*string kangaroo(int x1, int v1, int x2, int v2)
 {
-    int maxi = 0, mini = 0, inter = 0 ;
-    if (a < b)
+    string result;
+    if ((v1 <= v2) || ((x2 - x1) % (v2 - v1)))
     {
-        if (a < c)
-        {
-            mini = a;
-            if (b < c)
-            {
-                maxi = c;
-                inter = b;
-            }
-            else
-            {
-                inter = c;
-                maxi = b;
-            }
-        }
-        else
-        {
-            mini = c;
-            inter = a;
-            maxi = b;
-        }
+        result = "NO";
     }
     else
     {
-        if (b < c)
-        {
-            mini = b;
-            if (c < a)
-            {
-                inter = c;
-                maxi = a;
-            }
-            else
-            {
-                inter = a;
-                maxi = c;
-            }
-        }
-        else
-        {
-            inter = b;
-            maxi = a;
-            mini = c;
-        }
+        result = "YES";
     }
-    cout << mini << endl << inter << endl << maxi << endl;
-    cout << a << endl << b << endl << c ;
-}
-
-void floatOrInt(float fNumber)
-{
-    int intNumber;
-    intNumber = fNumber;
-    float fraction;
-    fraction = fNumber - intNumber;
-
-    if (fraction == 0)
-    {
-        cout << "int " << intNumber;
-    }
-    else
-    {
-        cout << "float " << intNumber << " " << fraction;
-    }
-
-}
-
-string interval(float fNumber)
-{
-    string result = " ";
-    if (fNumber >= 0 && fNumber <= 100)
-    {
-        if (fNumber >= 0 && fNumber <= 25)
-            result = "Interval [0,25]";
-        else if (fNumber > 25 && fNumber <= 50)
-            result = "Interval (25,50]";
-        else if (fNumber > 50 && fNumber <= 75)
-            result = "Interval (50,75]";
-        else
-            result = "Interval (75,100]";
-    }
-    else
-        result = "Out of Intervals";
 
     return result;
+}*/
+
+void winterSale(float percent, float price)
+{
+    float totalPrice = 0;
+    totalPrice = (percent * price) / (100 - percent);
+    totalPrice += price;
+    cout << totalPrice;
 }
 
-void oneToN(int no)
+void memoAndMomo(long long a, long long b, long long k)
 {
-    for (int i = 1; i <= no; i++)
+    if (a % k != 0 && b % k != 0)
     {
-        cout << i << endl;
+        cout << "No One";
     }
-}
-
-void evenNumbers(int number)
-{
-    if (number >= 2)
+    else if (a % k == 0 && b % k == 0)
     {
-        for (int i = 2; i <= number; i += 2)
-        {
-            cout << i << endl;
-        }
+        cout << "Both";
+    }
+    else if (a % k == 0)
+    {
+        cout << "Memo";
     }
     else
-        cout << "-1";
+    {
+        cout << "Momo";
+    }
 }
 
-void evenOddPosNeg(int numberOfVariables)
+void nextChar(char c)
 {
-    int positive = 0, negative = 0, even = 0, odd = 0, var = 0;
-    cin >> numberOfVariables;
-    for (int i = 1; i <= numberOfVariables; i++)
+    if (c == 122)
     {
-        cin >> var;
-        if (var > 0)
-            positive++;
-        else if (var < 0)
-            negative++;
-
-        var %= 2;
-        if (var == 0)
-            even++;
-        else
-            odd++;
+        cout << 'a';
     }
+    else
+    {
+        cout << ++c;
+    }
+}
 
-    cout << "Even: " << even << endl;
-    cout << "Odd: " << odd << endl;
-    cout << "Positive: " << positive << endl;
-    cout << "Negative: " << negative << endl;
-}    //code this directly in the main function
-
-long timonAndPompa(long a, long b)
+string aliBabaPuzzle(int a, int b, int c, long d)
 {
-    long result = 0;
+    string result;
+    /*if (a + b - c == d )
+    {
+        result = "YES";
+    }else if (a + (b * c )== d )
+    {
+        result = "YES";
+    }else if (a -( b * c )== d )
+    {
+        result = "YES";
+    }else if (a - b + c == d )
+    {
+        result = "YES";
+    }else if ((a * b) + c == d )
+    {
+        result = "YES";
+    }else if ((a * b) - c == d )
+    {
+        result = "YES";
+    }
+    else
+    {
+        result = "NO";
+    }*/
 
-    if (a > b)
-        result = a - b;
-
+    if (a + b - c == d) { result = "YES"; }
+    else if (a + b * c == d) { result = "YES"; }
+    else if (a - b * c == d) { result = "YES"; }
+    else if (a - b + c == d) { result = "YES"; }
+    else if (a * b + c == d) { result = "YES"; }
+    else if (a * b - c == d) { result = "YES"; }
+    else { result = "NO"; }
+    
     return result;
 }
-
-void pyramid(int io)
+    
+void luckyNumbers(int xy)
 {
-    for (int i = 1; i <= io; i++)
+    int x = xy % 10;
+    int y = xy / 10;
+
+    if (x % y == 0)
     {
-        for (int j = 1; j <= i; j++)
-        {
-            cout << "*";
-        }
-        cout << endl;
+        cout << "YES";
+    }
+    else if (y % x == 0)
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
     }
 }
 
-void multiplicationTable(int number)
+void dataTypeGuessing(double a, double k, double n)
 {
-    for (int i = 1; i <= 12; i++)
+    double result;
+    result = (a * k) / n;
+    long long myNumber = result;
+    double myFraction = result - myNumber;
+    if (myFraction != 0)
     {
-        cout << number << " * " << i << " = " << number * i << endl;
+        cout << "double";
+    }
+    else if (myNumber <= 2147483647)
+    {
+        cout << "int";
+    }
+    else
+    {
+        cout << "long long";
     }
 
 }
 
-void fixedPassword()
+void sayHello(string s)
 {
-    bool whileKey = true;
-    string password = " ";
-    while (whileKey)
-    {
-        cin >> password;
-        if (password == "1999")
-        {
-            cout << "Correct";
-            whileKey = false;
-        }
-        else
-            cout << "Wrong";
-    }
+    cout << "Hello, " + s;
+}
 
-}//code this in the main function
-
-long MAX(int no)
+void basicDataType(int i, long long ll, char c, float f, double d)
 {
-    long maxi = 0, vari = 0;
-    for (int i = 1; i <= no; i++)
-    {
-        cin >> vari;
-        if (vari > maxi)
-        {
-            maxi = vari;
-        }
-    }
-    return maxi;
-}//this code in the main function
+    cout << i << endl;
+    cout << ll << endl;
+    cout << c << endl;
+    cout << f << endl;
+    cout << d << endl;
+}
 
-long long summation(long arr[], int n)
+void simpleCalculator(long long a, long long b)
+{
+    cout << a << " + " << b << " = " << a + b << endl;
+    cout << a << " * " << b << " = " << a * b << endl;
+    cout << a << " - " << b << " = " << a - b << endl;
+}
+
+void difference(long long a1, long long a2, long long a3, long long a4)
+{
+    long long left = a1 * a2;
+    long long right = a3 * a4;
+    long long result;
+    result = left - right;
+    cout << "Difference = " << result;
+}
+
+void areaOfCircle(int raduis)
+{
+    float const PI = 3.141592653;
+    cout << setprecision(9) << raduis * raduis * PI;
+}
+
+void digitsSummation(long long a, long long b)
+{
+    a %= 10;
+    b %= 10;
+    a += b;
+    cout << a;
+}
+
+long long summation(long long n)
 {
     long long result = 0;
-    for (int i = 0; i < n; i++)
+    /*for (int i = 1; i <= n; i++)
     {
-        result += arr[i];
-    }
-    result = abs(result);
+       result += i;
+    }*/                                      //time limit
+    result = n * (n + 1) / 2;
     return result;
 }
 
-void lucky(string myNumbers[], int testCases)
+void floorCeilRound(float x, float y)
 {
-    int left3 = 0, right3 = 0;
-    for (int i = 0; i < testCases; i++)
+    float result = x / y;      //7.7
+    int intResult = x / y;     //7
+    float fraction = result - intResult;  //.7
+    float ceilFraction = 0;
+    if (fraction > 0)
     {
-        left3 = myNumbers[i][0] + myNumbers[i][1] + myNumbers[i][2];
-        right3 = myNumbers[i][3] + myNumbers[i][4] + myNumbers[i][5];
-        if (left3 == right3)
-            myNumbers[i] = "YES";
-        else
-            myNumbers[i] = "NO";
+        ceilFraction = 1 - fraction;
+        result += ceilFraction;//.3
     }
+    else if(fraction == 0)
+        result += ceilFraction;    //8   
 
-    for (int i = 0; i < testCases; i++)
+    cout << "floor " << x << " / " << y << " = " << intResult << endl;
+    cout << "ceil " << x << " / " << y << " = " << result << endl;
+    if (fraction == 0)
     {
-        cout << myNumbers[i] << endl;
+        cout << "round " << x << " / " << y << " = " << intResult << endl;
     }
-
-}
-
-void lastTwoDigits(int a, int b, int c, int d)
-{
-    a %= 100;
-    b %= 100;
-    c %= 100;
-    d %= 100;
-    
-    a = a * b * c * d;
-    a %= 100;
-
-    if (a < 10)
-        cout << 0 << a;
+    else if (fraction < .5)
+    {
+        cout << "round " << x << " / " << y << " = " << intResult << endl;
+    }
     else
-        cout << a;
-
+    {
+        intResult += 1;
+        cout << "round " << x << " / " << y << " = " << intResult << endl;
+    }
 }
 
+string welcomeWithConditions(int x, int y)
+{
+    string result = "No";
+    if (x >= y)
+    {
+        result = "Yes";
+    }
+    return result;
+}
 
+string multiples(int a, int b)
+{
+    string result = "Multiples";
+    if (a % b != 0 && b % a != 0)
+    {
+        result = "No Multiples";
+    }
+
+    return result;
+}
+
+//main function:
 int main()
 {
     
+    
 
-    return 0;
+   
 }
