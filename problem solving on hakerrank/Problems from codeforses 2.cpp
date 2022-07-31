@@ -87,7 +87,7 @@ string onePrime(int n)
 
     if (n >= 2)
     {
-        for (int i = 3; i < n; i++)
+        for (int i = 2; i < n; i++)
         {
             if (n > 3)
             {
