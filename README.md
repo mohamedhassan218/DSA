@@ -9,3 +9,6 @@ https://www.hackerrank.com/domains/algorithms?badge_type=problem-solving
 
 Problems on LeetCode:
 https://leetcode.com/problem-list/top-interview-questions/?page=1
+
+SQL 50 on LeetCode:
+https://leetcode.com/studyplan/top-sql-50/
